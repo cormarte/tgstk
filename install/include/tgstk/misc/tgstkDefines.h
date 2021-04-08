@@ -1,0 +1,8 @@
+#ifndef TGSTKDEFINES_H
+#define TGSTKDEFINES_H
+
+#define BOUNDARY_X_FLAG 4
+#define BOUNDARY_Y_FLAG 2
+#define BOUNDARY_Z_FLAG 1
+
+#endif // TGSTKDEFINES_H

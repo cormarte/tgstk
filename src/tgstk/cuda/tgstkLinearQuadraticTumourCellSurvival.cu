@@ -2,7 +2,6 @@
 
 #include <cuda_runtime.h>
 
-
 __global__ void gpuLinearQuadraticTumourCellSurvivalKernel(cudaPitchedPtr devDoseMap, cudaPitchedPtr devInitialDensity, cudaPitchedPtr devFinalDensity, float alpha, float beta, int w, int h, int d) {
 
     const int x = blockIdx.x * blockDim.x + threadIdx.x;

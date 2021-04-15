@@ -1,26 +1,9 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2020-02-13T09:15:24
-#
-#-------------------------------------------------
-
 QT -= core gui
 
-TARGET = tgstk
 TEMPLATE = lib
 
 DEFINES += TGSTK_LIBRARY
-
-# The following define makes your compiler emit warnings if you use
-# any feature of Qt which has been marked as deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
-
-# You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
     tgstk/algorithms/tgstkAlgorithmBase.cpp \
@@ -28,10 +11,10 @@ SOURCES += \
     tgstk/core/tgstkObjectBase.cpp \
     tgstk/algorithms/tgstkMeshScalarsFromImageFilter.cpp \
     tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.cpp \
-    tgstk/algorithms/tgstkImageProcessor.cpp \
     tgstk/algorithms/tgstkWaterToTumourCellDiffusionTensorImageFilter.cpp \
-    tgstk/algorithms/tgstkMeshProcessor.cpp \
-    tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.cpp
+    tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.cpp \
+    tgstk/algorithms/tgstkImageProcessorBase.cpp \
+    tgstk/algorithms/tgstkMeshProcessorBase.cpp
 
 HEADERS += \
     tgstk/algorithms/tgstkAlgorithmBase.h \
@@ -42,7 +25,6 @@ HEADERS += \
     tgstk/external/featk/featkNode.h \
     tgstk/external/featk/featkUtils.h \
     tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h \
-    tgstk/algorithms/tgstkImageProcessor.h \
     tgstk/misc/tgstkBrainTissueType.h \
     tgstk/algorithms/tgstkWaterToTumourCellDiffusionTensorImageFilter.h \
     tgstk/misc/tgstkDefines.h \
@@ -50,10 +32,51 @@ HEADERS += \
     tgstk/cuda/tgstkCUDADerivatives.h \
     tgstk/tgstkGlobal.h \
     tgstk/cuda/tgstkFiniteDifferenceReactionDiffusionStandardStencil.h \
-    tgstk/algorithms/tgstkMeshProcessor.h \
+    tgstk/algorithms/tgstkMeshProcessorBase.h \
     tgstk/cuda/tgstkCUDACommon.h \
     tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h \
-    tgstk/cuda/tgstkLinearQuadraticTumourCellSurvival.h
+    tgstk/cuda/tgstkLinearQuadraticTumourCellSurvival.h \
+    tgstk/algorithms/tgstkImageProcessorBase.h
+
+
+contains(CONFIG, "python") {
+
+    TARGET = _tgstk
+    TARGET_EXT = .pyd
+
+    target.path = ../install/py/tgstk
+    INSTALLS += target
+
+    python.path = ../install/py/tgstk
+    python.files += tgstk.py
+    INSTALLS += python
+}
+
+else {
+
+    TARGET = tgstk
+    TARGET_EXT = .dll
+
+    bin.path = ../install/cpp/bin
+    bin.files += $$OUT_PWD/release/$$TARGET$$TARGET_EXT
+    INSTALLS += bin
+
+    lib.path = ../install/cpp/lib
+    lib.files += $$OUT_PWD/release/$${TARGET}.lib
+    INSTALLS += lib
+
+    for(header, $$list($$HEADERS)) {
+
+        path = ../install/cpp/include/$$dirname(header)
+        pathname = $$replace(path,/,)
+        pathname = $$replace(pathname,\.,)
+        pathname = $$replace(pathname,:,)
+        file = headers_$${pathname}
+        eval($${file}.files += $$header)
+        eval($${file}.path = $$path)
+        INSTALLS *= $${file}
+    }
+}
 
 #Boost
 BOOST_MAJOR = 1
@@ -63,8 +86,8 @@ BOOST_VERSION = $${BOOST_MAJOR}.$${BOOST_MINOR}
 INCLUDEPATH += \
     C:/Libraries/Boost/$$BOOST_VERSION/install/include
 
-LIBS += \
-    -LC:/Libraries/Boost/$$BOOST_VERSION/install/lib64-msvc-14.0
+#LIBS += \
+#    -LC:/Libraries/Boost/$$BOOST_VERSION/install/lib64-msvc-14.0
 
 #Eigen
 EIGEN_MAJOR = 3
@@ -99,7 +122,8 @@ CUDA_DIR = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v$$CUDA_VERSION"
 
 CUDA_SOURCES += ./tgstk/cuda/tgstkCUDADerivatives.cu \
                 ./tgstk/cuda/tgstkCUDAOperations.cu \
-                ./tgstk/cuda/tgstkFiniteDifferenceReactionDiffusionStandardStencil.cu
+                ./tgstk/cuda/tgstkFiniteDifferenceReactionDiffusionStandardStencil.cu \
+                ./tgstk/cuda/tgstkLinearQuadraticTumourCellSurvival.cu
 
 SYSTEM_NAME = x64
 SYSTEM_TYPE = 64
@@ -170,7 +194,7 @@ LIBS +=  \
     -llibmpfr-$$MPFR_VERSION
 
 #VTK
-VTK_MAJOR = 8
+VTK_MAJOR = 9
 VTK_MINOR = 0
 VTK_BUILD = 1
 
@@ -180,47 +204,84 @@ VTK_FULL_VERSION = $${VTK_VERSION}.$${VTK_BUILD}
 INCLUDEPATH += \
     C:/Libraries/VTK/$$VTK_FULL_VERSION/install/include/vtk-$$VTK_VERSION
 
-LIBS += \
-    -LC:/Libraries/VTK/$$VTK_FULL_VERSION/install/lib \
-    -lvtkCommonColor-$$VTK_VERSION \
-    -lvtkCommonComputationalGeometry-$$VTK_VERSION \
-    -lvtkCommonCore-$$VTK_VERSION \
-    -lvtkCommonDataModel-$$VTK_VERSION \
-    -lvtkCommonExecutionModel-$$VTK_VERSION \
-    -lvtkCommonMath-$$VTK_VERSION \
-    -lvtkCommonMisc-$$VTK_VERSION \
-    -lvtkCommonSystem-$$VTK_VERSION \
-    -lvtkDICOM-$$VTK_VERSION \
-    -lvtkDICOMParser-$$VTK_VERSION \
-    -lvtkCommonTransforms-$$VTK_VERSION \
-    -lvtkFiltersCore-$$VTK_VERSION \
-    -lvtkFiltersExtraction-$$VTK_VERSION \
-    -lvtkFiltersGeneral-$$VTK_VERSION \
-    -lvtkFiltersGeometry-$$VTK_VERSION \
-    -lvtkFiltersSources-$$VTK_VERSION \
-    -lvtkFiltersStatistics-$$VTK_VERSION \
-    -lvtkglew-$$VTK_VERSION \
-    -lvtkGUISupportQt-$$VTK_VERSION \
-    -lvtkImagingCore-$$VTK_VERSION \
-    -lvtkImagingFourier-$$VTK_VERSION \
-    -lvtkInteractionStyle-$$VTK_VERSION \
-    -lvtkIOCore-$$VTK_VERSION \
-    -lvtkIOGeometry-$$VTK_VERSION \
-    -lvtkIOImage-$$VTK_VERSION \
-    -lvtkIOLegacy-$$VTK_VERSION \
-    -lvtkjpeg-$$VTK_VERSION \
-    -lvtkmetaio-$$VTK_VERSION \
-    -lvtkpng-$$VTK_VERSION \
-    -lvtkRenderingCore-$$VTK_VERSION \
-    -lvtkRenderingOpenGL2-$$VTK_VERSION \
-    -lvtkRenderingQt-$$VTK_VERSION \
-    -lvtksys-$$VTK_VERSION \
-    -lvtktiff-$$VTK_VERSION \
-    -lvtkzlib-$$VTK_VERSION
+contains(CONFIG, "python") {
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
+    SOURCES += \
+        tgstk_wrap.cxx \
+
+    HEADERS += \
+        tgstk.i \
+        vtk.i
+
+    INCLUDEPATH += \
+        C:/Users/Administrateur/Anaconda3/envs/tgstk_env/include
+
+    LIBS +=  \
+        -LC:/Users/Administrateur/Anaconda3/envs/tgstk_env\libs \
+        -lpython38 \
+        -LC:\Users\Administrateur\Anaconda3\envs\tgstk_env\Lib\site-packages\vtkmodules \
+        -lvtkCommonComputationalGeometry \
+        -lvtkCommonCore \
+        -lvtkCommonDataModel \
+        -lvtkCommonExecutionModel \
+        -lvtkCommonMath \
+        -lvtkCommonMisc \
+        -lvtkCommonSystem \
+        -lvtkCommonTransforms \
+        -lvtkDICOMParser \
+        -lvtkFiltersCore \
+        -lvtkFiltersGeneral \
+        -lvtkImagingCore \
+        -lvtkIOImage \
+        -lvtkjpeg \
+        -lvtkmetaio \
+        -lvtkpng \
+        -lvtksys \
+        -lvtktiff \
+        -lvtkWrappingPythonCore \
+        -lvtkzlib
+}
+
+else {
+
+    LIBS += \
+        -LC:/Libraries/VTK/$$VTK_FULL_VERSION/install/lib \
+        -lvtkCommonColor-$$VTK_VERSION \
+        -lvtkCommonComputationalGeometry-$$VTK_VERSION \
+        -lvtkCommonCore-$$VTK_VERSION \
+        -lvtkCommonDataModel-$$VTK_VERSION \
+        -lvtkCommonExecutionModel-$$VTK_VERSION \
+        -lvtkCommonMath-$$VTK_VERSION \
+        -lvtkCommonMisc-$$VTK_VERSION \
+        -lvtkCommonSystem-$$VTK_VERSION \
+        -lvtkDICOM-$$VTK_VERSION \
+        -lvtkDICOMParser-$$VTK_VERSION \
+        -lvtkCommonTransforms-$$VTK_VERSION \
+        -lvtkFiltersCore-$$VTK_VERSION \
+        -lvtkFiltersExtraction-$$VTK_VERSION \
+        -lvtkFiltersGeneral-$$VTK_VERSION \
+        -lvtkFiltersGeometry-$$VTK_VERSION \
+        -lvtkFiltersSources-$$VTK_VERSION \
+        -lvtkFiltersStatistics-$$VTK_VERSION \
+        -lvtkglew-$$VTK_VERSION \
+        -lvtkGUISupportQt-$$VTK_VERSION \
+        -lvtkImagingCore-$$VTK_VERSION \
+        -lvtkImagingFourier-$$VTK_VERSION \
+        -lvtkInteractionStyle-$$VTK_VERSION \
+        -lvtkIOCore-$$VTK_VERSION \
+        -lvtkIOGeometry-$$VTK_VERSION \
+        -lvtkIOImage-$$VTK_VERSION \
+        -lvtkIOLegacy-$$VTK_VERSION \
+        -lvtkjpeg-$$VTK_VERSION \
+        -lvtkmetaio-$$VTK_VERSION \
+        -lvtkpng-$$VTK_VERSION \
+        -lvtkRenderingCore-$$VTK_VERSION \
+        -lvtkRenderingOpenGL2-$$VTK_VERSION \
+        -lvtkRenderingQt-$$VTK_VERSION \
+        -lvtksys-$$VTK_VERSION \
+        -lvtktiff-$$VTK_VERSION \
+        -lvtkWrappingPythonCore-$$VTK_VERSION \
+        -lvtkzlib-$$VTK_VERSION
 }
 
 DISTFILES += \

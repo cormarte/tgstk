@@ -13,8 +13,8 @@ tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::tgstkFiniteDifferenceR
 
     this->objectName = "tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter";
 
-    this->coreProliferationRate = 43.8/365.0;
-    this->nonCoreProliferationRate = 43.8/365.0;
+    //this->coreProliferationRate = 43.8/365.0;
+    //this->nonCoreProliferationRate = 43.8/365.0;
     this->simulatedTime = 120.0;
     this->timeStep = 0.05;
 
@@ -23,7 +23,7 @@ tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::tgstkFiniteDifferenceR
     this->finalCellDensityGradientImage = nullptr;
     this->initialCellDensityImage = nullptr;
     this->proliferationRateImage = nullptr;
-    this->tumourCellDiffusionTensorImage = nullptr;
+    this->diffusionTensorImage = nullptr;
 }
 
 tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::~tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter() {
@@ -34,8 +34,8 @@ bool tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::check() {
 
     // Parameters
 
-    if (!assertValueInRange(coreProliferationRate, 0.0, std::numeric_limits<double>::max())) return false;
-    if (!assertValueInRange(nonCoreProliferationRate, 0.0, std::numeric_limits<double>::max())) return false;
+    //if (!assertValueInRange(coreProliferationRate, 0.0, std::numeric_limits<double>::max())) return false;
+    //if (!assertValueInRange(nonCoreProliferationRate, 0.0, std::numeric_limits<double>::max())) return false;
     if (!assertValueInRange(simulatedTime, 0.0, std::numeric_limits<double>::max())) return false;
     if (!assertValueInRange(timeStep, std::numeric_limits<double>::epsilon(), std::numeric_limits<double>::max())) return false;
 
@@ -63,15 +63,15 @@ bool tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::check() {
 
     // Tumour cell diffusion tensor
 
-    if (!assertNotNullPtr(tumourCellDiffusionTensorImage)) return false;
-    if (!assertImageScalarType(tumourCellDiffusionTensorImage, std::vector<int>({VTK_DOUBLE}))) return false;
-    if (!assertImageNumberOfScalarComponents(tumourCellDiffusionTensorImage, std::vector<int>({6, 9}))) return false;
+    if (!assertNotNullPtr(diffusionTensorImage)) return false;
+    if (!assertImageScalarType(diffusionTensorImage, std::vector<int>({VTK_DOUBLE}))) return false;
+    if (!assertImageNumberOfScalarComponents(diffusionTensorImage, std::vector<int>({6, 9}))) return false;
 
 
     // Image geometries
 
-    if (!checkImageDimensions({brainMapImage, initialCellDensityImage, proliferationRateImage, tumourCellDiffusionTensorImage})) return false;
-    if (!checkImageSpacings({brainMapImage, initialCellDensityImage, proliferationRateImage, tumourCellDiffusionTensorImage})) return false;
+    if (!assertEqualImageDimensions({brainMapImage, initialCellDensityImage, proliferationRateImage, diffusionTensorImage})) return false;
+    if (!assertEqualImageSpacings({brainMapImage, initialCellDensityImage, proliferationRateImage, diffusionTensorImage})) return false;
 
     return true;
 }
@@ -194,12 +194,12 @@ void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::execute() {
 
             for (int x=bounds[0]; x!=bounds[1]+1; x++) {
 
-                dxxArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[0]);
-                dxyArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[1]);
-                dxzArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[2]);
-                dyyArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[3]);
-                dyzArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[4]);
-                dzzArray[index] = (float)(static_cast<double*>(this->tumourCellDiffusionTensorImage->GetScalarPointer(x, y, z))[5]);
+                dxxArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[0]);
+                dxyArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[1]);
+                dxzArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[2]);
+                dyyArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[3]);
+                dyzArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[4]);
+                dzzArray[index] = (float)(static_cast<double*>(this->diffusionTensorImage->GetScalarPointer(x, y, z))[5]);
                 proliferationRateArray[index] = (float)(static_cast<double*>(this->proliferationRateImage->GetScalarPointer(x, y, z))[0]);
                 boundaryArray[index] = (unsigned char)(static_cast<unsigned short*>(boundaryImage->GetScalarPointer(x, y, z))[0]);
                 initialCellDensityArray[index] = (float)(static_cast<double*>(this->initialCellDensityImage->GetScalarPointer(x, y, z))[0]);
@@ -269,22 +269,7 @@ vtkSmartPointer<vtkImageData> tgstkFiniteDifferenceReactionDiffusionTumourGrowth
     return this->finalCellDensityGradientImage;
 }
 
-vtkSmartPointer<vtkImageData> tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::getInitialCellDensityImage() {
-
-    return this->initialCellDensityImage;
-}
-
-vtkSmartPointer<vtkImageData> tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::getProliferationRateImage() {
-
-    return this->proliferationRateImage;
-}
-
-vtkSmartPointer<vtkImageData> tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::getTumourCellDiffusionTensorImage() {
-
-    return this->tumourCellDiffusionTensorImage;
-}
-
-void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::setBrainMapImage(vtkSmartPointer<vtkImageData> image) {
+void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::setBrainMapImage(vtkImageData *image) {
 
     this->brainMapImage = image;
 }
@@ -309,7 +294,7 @@ void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::setTimeStep(doubl
     this->timeStep = step;
 }
 
-void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::setTumourDiffusionTensorImage(vtkSmartPointer<vtkImageData> image) {
+void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::setDiffusionTensorImage(vtkSmartPointer<vtkImageData> image) {
 
-    this->tumourCellDiffusionTensorImage = image;
+    this->diffusionTensorImage = image;
 }

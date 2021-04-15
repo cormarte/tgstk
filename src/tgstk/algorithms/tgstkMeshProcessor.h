@@ -1,5 +1,5 @@
-#ifndef TGSTKMESHPROCESSOR_H
-#define TGSTKMESHPROCESSOR_H
+#ifndef TGSTKMESHPROCESSORBASE_H
+#define TGSTKMESHPROCESSORBASE_H
 
 #include <tgstk/tgstkGlobal.h>
 #include <tgstk/algorithms/tgstkAlgorithmBase.h>
@@ -7,15 +7,15 @@
 #include <vtkSmartPointer.h>
 #include <vtkUnstructuredGrid.h>
 
-class TGSTK_EXPORT tgstkMeshProcessor : public virtual tgstkAlgorithmBase {
+class TGSTK_EXPORT tgstkMeshProcessorBase : public virtual tgstkAlgorithmBase {
 
     public:
 
-        virtual ~tgstkMeshProcessor();
+        virtual ~tgstkMeshProcessorBase();
 
     protected:
 
-        tgstkMeshProcessor();
+        tgstkMeshProcessorBase();
 };
 
-#endif // TGSTKMESHPROCESSOR_H
+#endif // TGSTKMESHPROCESSORBASE_H

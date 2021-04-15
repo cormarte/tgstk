@@ -11,9 +11,9 @@ tgstkWaterToTumourCellDiffusionTensorImageFilter::tgstkWaterToTumourCellDiffusio
     this->objectName = "tgstkWaterToTumourCellDiffusionTensorImageFilter";
 
     this->anisotropyFactor = 10.0;
-    this->diffusionTensorMode = ANISOTROPIC;
-    this->greyMatterDiffusionRate = 3.0/365.0;
-    this->whiteMatterDiffusionRate = 30.0/365.0;
+    this->tensorMode = ANISOTROPIC;
+    this->greyMatterMeanDiffusivity = 3.0/365.0;
+    this->whiteMatterMeanDiffusivity = 30.0/365.0;
 
     this->brainMapImage = nullptr;
     this->tumourCellDiffusionTensorImage = nullptr;
@@ -29,8 +29,8 @@ bool tgstkWaterToTumourCellDiffusionTensorImageFilter::check() {
     // Parameters
 
     if (!assertValueInRange(anisotropyFactor, 1.0, std::numeric_limits<double>::max())) return false;
-    if (!assertValueInRange(greyMatterDiffusionRate, 0.0, std::numeric_limits<double>::max())) return false;
-    if (!assertValueInRange(whiteMatterDiffusionRate, 0.0, std::numeric_limits<double>::max())) return false;
+    if (!assertValueInRange(greyMatterMeanDiffusivity, 0.0, std::numeric_limits<double>::max())) return false;
+    if (!assertValueInRange(whiteMatterMeanDiffusivity, 0.0, std::numeric_limits<double>::max())) return false;
 
 
     // Brain map
@@ -42,7 +42,7 @@ bool tgstkWaterToTumourCellDiffusionTensorImageFilter::check() {
 
     // Water diffusion tensor
 
-    if (this->diffusionTensorMode == ANISOTROPIC) {
+    if (this->tensorMode == ANISOTROPIC) {
 
         if (!assertNotNullPtr(waterDiffusionTensorImage)) return false;
         if (!assertImageScalarType(waterDiffusionTensorImage, std::vector<int>({VTK_DOUBLE}))) return false;
@@ -78,25 +78,25 @@ void tgstkWaterToTumourCellDiffusionTensorImageFilter::execute() {
 
                     case GREY_MATTER: {
 
-                        dxx = this->greyMatterDiffusionRate;
+                        dxx = this->greyMatterMeanDiffusivity;
                         dxy = 0.0;
                         dxz = 0.0;
-                        dyy = this->greyMatterDiffusionRate;
+                        dyy = this->greyMatterMeanDiffusivity;
                         dyz = 0.0;
-                        dzz = this->greyMatterDiffusionRate;
+                        dzz = this->greyMatterMeanDiffusivity;
                     }
                     break;
 
                     case WHITE_MATTER: case OEDEMA: case ENHANCING_CORE: {
 
-                        if (this->diffusionTensorMode == ISOTROPIC) {
+                        if (this->tensorMode == ISOTROPIC) {
 
-                            dxx = this->whiteMatterDiffusionRate;
+                            dxx = this->whiteMatterMeanDiffusivity;
                             dxy = 0.0;
                             dxz = 0.0;
-                            dyy = this->whiteMatterDiffusionRate;
+                            dyy = this->whiteMatterMeanDiffusivity;
                             dyz = 0.0;
-                            dzz = this->whiteMatterDiffusionRate;
+                            dzz = this->whiteMatterMeanDiffusivity;
                         }
 
                         else {
@@ -143,7 +143,7 @@ void tgstkWaterToTumourCellDiffusionTensorImageFilter::execute() {
                                 double a2l2 = (cl + r*cp + cs)*l2;
                                 double a3l3 = (cl + cp + cs)*l3;
 
-                                double factor = 3.0*this->whiteMatterDiffusionRate/(a1l1 + a2l2 + a3l3);
+                                double factor = 3.0*this->whiteMatterMeanDiffusivity/(a1l1 + a2l2 + a3l3);
 
                                 dxx = factor*(a1l1*v1[0]*v1[0] + a2l2*v2[0]*v2[0] + a3l3*v3[0]*v3[0]);
                                 dxy = factor*(a1l1*v1[0]*v1[1] + a2l2*v2[0]*v2[1] + a3l3*v3[0]*v3[1]);

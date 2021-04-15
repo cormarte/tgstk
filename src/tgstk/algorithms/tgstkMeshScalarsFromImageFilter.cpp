@@ -90,7 +90,7 @@ void tgstkMeshScalarsFromImageFilter::execute() {
             for (size_t i=0; i!=numberOfTuples; i++) {
 
                 vtkIdType numIds;
-                vtkIdType* pointIds;
+                const vtkIdType* pointIds;
                 cells->GetCell(cellLocation, numIds, pointIds);
 
                 double barycenter[3];
@@ -155,7 +155,7 @@ void tgstkMeshScalarsFromImageFilter::execute() {
                 }
 
                 vtkIdType numIds;
-                vtkIdType* pointIds;
+                const vtkIdType* pointIds;
                 cells->GetCell(cellLocation, numIds, pointIds);
 
                 for (size_t j=0; j!=numIds; j++) {

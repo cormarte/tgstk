@@ -2,10 +2,10 @@
 #define TGSTKMESHSCALARSFROMIMAGEFILTER_H
 
 #include <tgstk/tgstkGlobal.h>
-#include <tgstk/algorithms/tgstkImageProcessor.h>
+#include <tgstk/algorithms/tgstkImageProcessorBase.h>
 #include <tgstk/algorithms/tgstkMeshProcessor.h>
 
-class TGSTK_EXPORT tgstkMeshScalarsFromImageFilter : public virtual tgstkImageProcessor, public virtual tgstkMeshProcessor {
+class TGSTK_EXPORT tgstkMeshScalarsFromImageFilter : public virtual tgstkImageProcessorBase, public virtual tgstkMeshProcessorBase {
 
     public:
 

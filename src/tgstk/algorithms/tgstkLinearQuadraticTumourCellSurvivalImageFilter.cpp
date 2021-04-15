@@ -1,7 +1,6 @@
 #include <tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h>
 #include <tgstk/cuda/tgstkLinearQuadraticTumourCellSurvival.h>
 
-#include <algorithm>
 #include <chrono>
 #include <limits>
 
@@ -23,7 +22,7 @@ tgstkLinearQuadraticTumourCellSurvivalImageFilter::~tgstkLinearQuadraticTumourCe
 
 }
 
-void tgstkLinearQuadraticTumourCellSurvivalImageFilter::check() {
+bool tgstkLinearQuadraticTumourCellSurvivalImageFilter::check() {
 
     // Parameters
 
@@ -47,8 +46,10 @@ void tgstkLinearQuadraticTumourCellSurvivalImageFilter::check() {
 
     // Image geometries
 
-    if (!checkImageDimensions({doseMapImage, initialCellDensityImage})) return false;
-    if (!checkImageSpacings({doseMapImage, initialCellDensityImage})) return false;
+    if (!assertEqualImageDimensions({doseMapImage, initialCellDensityImage})) return false;
+    if (!assertEqualImageSpacings({doseMapImage, initialCellDensityImage})) return false;
+
+    return true;
 }
 
 void tgstkLinearQuadraticTumourCellSurvivalImageFilter::execute() {
@@ -121,19 +122,9 @@ void tgstkLinearQuadraticTumourCellSurvivalImageFilter::execute() {
     delete [] finalCellDensityArray;
 }
 
-vtkSmartPointer<vtkImageData> tgstkLinearQuadraticTumourCellSurvivalImageFilter::getDoseMapImage() {
-
-    return this->doseMapImage;
-}
-
 vtkSmartPointer<vtkImageData> tgstkLinearQuadraticTumourCellSurvivalImageFilter::getFinalCellDensityImage() {
 
     return this->finalCellDensityImage;
-}
-
-vtkSmartPointer<vtkImageData> tgstkLinearQuadraticTumourCellSurvivalImageFilter::getInitialCellDensityImage() {
-
-    return this->initialCellDensityImage;
 }
 
 void tgstkLinearQuadraticTumourCellSurvivalImageFilter::setAlpha(double alpha) {

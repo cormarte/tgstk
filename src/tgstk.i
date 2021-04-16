@@ -3,6 +3,7 @@
 %{
 #include <vtkPythonUtil.h>
 #include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+#include <tgstk/misc/tgstkBrainTissueType.h>
 %}
 
 %include "windows.i"
@@ -14,3 +15,4 @@ VTK_SWIG_INTEROP(vtkImageData)
 %include <tgstk/algorithms/tgstkAlgorithmBase.h>
 %include <tgstk/algorithms/tgstkImageProcessorBase.h>
 %include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+%include <tgstk/misc/tgstkBrainTissueType.h>

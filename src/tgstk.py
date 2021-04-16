@@ -133,5 +133,12 @@ class tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter(tgstkImageProcess
 # Register tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter in _tgstk:
 _tgstk.tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swigregister(tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter)
 
+BACKGROUND = _tgstk.BACKGROUND
+NECROTIC_CORE = _tgstk.NECROTIC_CORE
+CSF = _tgstk.CSF
+GREY_MATTER = _tgstk.GREY_MATTER
+WHITE_MATTER = _tgstk.WHITE_MATTER
+OEDEMA = _tgstk.OEDEMA
+ENHANCING_CORE = _tgstk.ENHANCING_CORE
 
 

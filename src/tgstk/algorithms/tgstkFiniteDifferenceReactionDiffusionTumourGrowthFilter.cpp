@@ -257,6 +257,9 @@ void tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::execute() {
     delete [] boundaryArray;
     delete [] initialCellDensityArray;
     delete [] finalCellDensityArray;
+    delete [] finalCellDensityGradientXArray;
+    delete [] finalCellDensityGradientYArray;
+    delete [] finalCellDensityGradientZArray;
 }
 
 vtkSmartPointer<vtkImageData> tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter::getFinalCellDensityImage() {

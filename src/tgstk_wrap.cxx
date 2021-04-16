@@ -2817,6 +2817,7 @@ namespace swig {
 
 #include <vtkPythonUtil.h>
 #include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+#include <tgstk/misc/tgstkBrainTissueType.h>
 
 
 #include <vtkObjectBase.h>
@@ -2877,6 +2878,13 @@ SWIG_AsVal_double (PyObject *obj, double *val)
   }
 #endif
   return res;
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
 }
 
 #ifdef __cplusplus
@@ -4180,6 +4188,13 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
+  SWIG_Python_SetConstant(d, "BACKGROUND",SWIG_From_int(static_cast< int >(BACKGROUND)));
+  SWIG_Python_SetConstant(d, "NECROTIC_CORE",SWIG_From_int(static_cast< int >(NECROTIC_CORE)));
+  SWIG_Python_SetConstant(d, "CSF",SWIG_From_int(static_cast< int >(CSF)));
+  SWIG_Python_SetConstant(d, "GREY_MATTER",SWIG_From_int(static_cast< int >(GREY_MATTER)));
+  SWIG_Python_SetConstant(d, "WHITE_MATTER",SWIG_From_int(static_cast< int >(WHITE_MATTER)));
+  SWIG_Python_SetConstant(d, "OEDEMA",SWIG_From_int(static_cast< int >(OEDEMA)));
+  SWIG_Python_SetConstant(d, "ENHANCING_CORE",SWIG_From_int(static_cast< int >(ENHANCING_CORE)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

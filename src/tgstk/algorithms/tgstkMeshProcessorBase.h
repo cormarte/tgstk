@@ -22,21 +22,35 @@
 
 ==========================================================================*/
 
-%module tgstk
+/**
+ *
+ * @class tgstkMeshProcessorBase
+ *
+ * @brief Base class for TGSTK mesh processors.
+ *
+ * tgstkMeshProcessorBase is a base class for TGSTK mesh processing
+ * algorithms.
+ *
+ */
 
-%{
-#include <vtkPythonUtil.h>
-#include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
-#include <tgstk/misc/tgstkBrainTissueType.h>
-%}
+#ifndef TGSTKMESHPROCESSORBASE_H
+#define TGSTKMESHPROCESSORBASE_H
 
-%include "windows.i"
+#include <tgstk/tgstkGlobal.h>
+#include <tgstk/algorithms/tgstkAlgorithmBase.h>
 
-%include <vtk.i>
-VTK_SWIG_INTEROP(vtkImageData)
+#include <vtkSmartPointer.h>
+#include <vtkUnstructuredGrid.h>
 
-%include <tgstk/tgstkGlobal.h>
-%include <tgstk/algorithms/tgstkAlgorithmBase.h>
-%include <tgstk/algorithms/tgstkImageProcessorBase.h>
-%include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
-%include <tgstk/misc/tgstkBrainTissueType.h>
+class TGSTK_EXPORT tgstkMeshProcessorBase : public virtual tgstkAlgorithmBase {
+
+    public:
+
+        virtual ~tgstkMeshProcessorBase();
+
+    protected:
+
+        tgstkMeshProcessorBase();
+};
+
+#endif // TGSTKMESHPROCESSORBASE_H

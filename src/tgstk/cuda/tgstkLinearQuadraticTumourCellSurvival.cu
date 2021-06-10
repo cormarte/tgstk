@@ -1,3 +1,27 @@
+/*==========================================================================
+
+  This file is part of the Tumor Growth Simulation ToolKit (TGSTK)
+  (<https://github.com/cormarte/TGSTK>, <https://cormarte.github.io/TGSTK>).
+
+  Copyright (C) 2021  Corentin Martens
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+  Contact: corentin.martens@ulb.be
+
+==========================================================================*/
+
 #include "tgstkCUDACommon.h"
 
 #include <cuda_runtime.h>
@@ -37,7 +61,7 @@ void gpuLinearQuadraticTumourCellSurvival(float* hostDoseMap, float* hostInitial
 
     // Device selection
 
-    CHECK(cudaSetDevice(0));
+    CUDA_CHECK(cudaSetDevice(0));
 
 
     // Memory allocation
@@ -48,9 +72,9 @@ void gpuLinearQuadraticTumourCellSurvival(float* hostDoseMap, float* hostInitial
     cudaPitchedPtr devInitialDensity;
     cudaPitchedPtr devFinalDensity;
 
-    CHECK(cudaMalloc3D(&devDoseMap, floatExtent));
-    CHECK(cudaMalloc3D(&devInitialDensity, floatExtent));
-    CHECK(cudaMalloc3D(&devFinalDensity, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDoseMap, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devInitialDensity, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devFinalDensity, floatExtent));
 
 
     // Host to device copy
@@ -61,13 +85,13 @@ void gpuLinearQuadraticTumourCellSurvival(float* hostDoseMap, float* hostInitial
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDoseMap, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDoseMap;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostInitialDensity, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devInitialDensity;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
 
     // Kernel
@@ -83,17 +107,17 @@ void gpuLinearQuadraticTumourCellSurvival(float* hostDoseMap, float* hostInitial
     deviceToHostParameters.dstPtr = make_cudaPitchedPtr(hostFinalDensity, w * sizeof(float), w, h);
     deviceToHostParameters.extent = floatExtent;
     deviceToHostParameters.kind = cudaMemcpyDeviceToHost;
-    CHECK(cudaMemcpy3D(&deviceToHostParameters));
+    CUDA_CHECK(cudaMemcpy3D(&deviceToHostParameters));
 
 
     // Memory deallocation
 
-    CHECK(cudaFree(devDoseMap.ptr));
-    CHECK(cudaFree(devInitialDensity.ptr));
-    CHECK(cudaFree(devFinalDensity.ptr));
+    CUDA_CHECK(cudaFree(devDoseMap.ptr));
+    CUDA_CHECK(cudaFree(devInitialDensity.ptr));
+    CUDA_CHECK(cudaFree(devFinalDensity.ptr));
 
 
     // Reset
 
-    CHECK(cudaDeviceReset());
+    CUDA_CHECK(cudaDeviceReset());
 }

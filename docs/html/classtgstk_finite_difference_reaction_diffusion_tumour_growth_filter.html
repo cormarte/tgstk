@@ -89,7 +89,7 @@ Inheritance diagram for tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter
  <div class="center">
   <img src="classtgstk_finite_difference_reaction_diffusion_tumour_growth_filter.png" usemap="#tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_map" alt=""/>
   <map id="tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_map" name="tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_map">
-<area href="classtgstk_image_processor_base.html" alt="tgstkImageProcessorBase" shape="rect" coords="0,112,338,136"/>
+<area href="classtgstk_image_processor_base.html" title="Base class for TGSTK image processors." alt="tgstkImageProcessorBase" shape="rect" coords="0,112,338,136"/>
 <area href="classtgstk_algorithm_base.html" title="Base class for TGSTK algorithms." alt="tgstkAlgorithmBase" shape="rect" coords="0,56,338,80"/>
 <area href="classtgstk_object_base.html" alt="tgstkObjectBase" shape="rect" coords="0,0,338,24"/>
   </map>
@@ -194,7 +194,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Finite difference solver for reaction-diffusion tumour growth simulation over regular grids. </p>
-<p><a class="el" href="classtgstk_finite_difference_reaction_diffusion_tumour_growth_filter.html" title="Finite difference solver for reaction-diffusion tumour growth simulation over regular grids.">tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter</a> solves the reaction-diffusion tumour growth problem introduced in <a class="el" href="citelist.html#CITEREF_konukoglu_2007">[3]</a> <a class="el" href="citelist.html#CITEREF_hogea_2008">[1]</a> <a class="el" href="citelist.html#CITEREF_swanson_2008">[6]</a> <a class="el" href="citelist.html#CITEREF_rockne_2010">[5]</a> <a class="el" href="citelist.html#CITEREF_unkelbach_2014">[7]</a> :</p>
+<p><a class="el" href="classtgstk_finite_difference_reaction_diffusion_tumour_growth_filter.html" title="Finite difference solver for reaction-diffusion tumour growth simulation over regular grids.">tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter</a> solves the reaction-diffusion tumour growth problem introduced in <a class="el" href="citelist.html#CITEREF_konukoglu_2007">[4]</a> <a class="el" href="citelist.html#CITEREF_hogea_2008">[2]</a> <a class="el" href="citelist.html#CITEREF_swanson_2008">[7]</a> <a class="el" href="citelist.html#CITEREF_rockne_2010">[6]</a> <a class="el" href="citelist.html#CITEREF_unkelbach_2014">[8]</a> :</p>
 <p class="formulaDsp">
 \begin{cases} &amp;\frac{\partial c(\bar{r}, t)}{\partial t} = \bar{\nabla} \cdot \left( \bar{\bar{D}}(\bar{r}) \, \bar{\nabla} c(\bar{r}, t) \right) + \rho(\bar{r}) \, c(\bar{r}, t) \left( 1-c(\bar{r}, t) \right) &amp; \forall \bar{r} \in \Omega, \; \forall t &gt; 0 \\ &amp;c(\bar{r}, 0) = c_0(\bar{r}) &amp; \forall \bar{r} \in \Omega \\ &amp;\left( \bar{\bar{D}}(\bar{r}) \, \bar{\nabla} c(\bar{r}, t) \right) \cdot \bar{n}_{\partial \Omega}(\bar{r}) = 0 &amp; \forall \bar{r} \in \partial \Omega \end{cases}
 </p>
@@ -203,7 +203,7 @@ Additional Inherited Members</h2></td></tr>
 <p class="formulaDsp">
 \[ c_{i,j,k}^{n+1} = c_{i,j,k}^n + \Delta t \left(\text{div}_{i,j,k}^n + \rho_{i,j,k} \, c_{i,j,k}^n \, (1-c_{i,j,k}^n) \right) \]
 </p>
-<p>where subscript \(i, j, k\) refers to voxel \((i,j,k)\); superscript \(n\) refers to simulation step \(n\); \(\Delta t\) is the time step; and \(\text{div}_{i,j,k}^n\) is the divergence of the tumour cell flux given by \(\bar{\nabla} \cdot \left(\bar{\bar{D}}(\bar{r}) \, \bar{\nabla} c(\bar{r}, t) \right)\). The divergence term \(\text{div}_{i,j,k}^n\) is computed using a 3D extension of the standard stencil presented in <a class="el" href="citelist.html#CITEREF_mosayebi_2010">[4]</a>.</p>
+<p>where subscript \(i, j, k\) refers to voxel \((i,j,k)\); superscript \(n\) refers to simulation step \(n\); \(\Delta t\) is the time step; and \(\text{div}_{i,j,k}^n\) is the divergence of the tumour cell flux given by \(\bar{\nabla} \cdot \left(\bar{\bar{D}}(\bar{r}) \, \bar{\nabla} c(\bar{r}, t) \right)\). The divergence term \(\text{div}_{i,j,k}^n\) is computed using a 3D extension of the standard stencil presented in <a class="el" href="citelist.html#CITEREF_mosayebi_2010">[5]</a>.</p>
 <p>The initial tumour cell density \(c_0(\bar{r})\), diffusion tensor \(\bar{\bar{D}}(\bar{r})\), and proliferation rate \(\rho(\bar{r})\) fields as well as the brain map defining the domain \(\Omega\) can be specified by the user as <a href="https://vtk.org/doc/nightly/html/classvtkImageData.html">vtkImageData</a> objects. The simulated time \(T\) and time step \(\Delta t\) can also be specified.</p>
 <dl class="section warning"><dt>Warning</dt><dd>As the CUDA implementation performs in single precision floating point, a loss of precision may occur. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

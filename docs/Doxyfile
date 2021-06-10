@@ -751,7 +751,7 @@ LAYOUT_FILE            =
 # LATEX_BIB_STYLE. To use this feature you need bibtex and perl available in the
 # search path. See also \cite for info how to create references.
 
-CITE_BIB_FILES         = "D:\Documents de Corentin\Programmation\C++\tgstk\src\docs\bibliography.bib"
+CITE_BIB_FILES         = bibliography.bib
 
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages

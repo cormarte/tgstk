@@ -79,6 +79,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Tetrahedral mesh generation from a multiclass label image.  
+ <a href="classtgstk_image_to_mesh_filter.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="tgstk_image_to_mesh_filter_8h_source.html">tgstkImageToMeshFilter.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for tgstkImageToMeshFilter:</div>
@@ -86,8 +89,8 @@ Inheritance diagram for tgstkImageToMeshFilter:</div>
  <div class="center">
   <img src="classtgstk_image_to_mesh_filter.png" usemap="#tgstkImageToMeshFilter_map" alt=""/>
   <map id="tgstkImageToMeshFilter_map" name="tgstkImageToMeshFilter_map">
-<area href="classtgstk_image_processor_base.html" alt="tgstkImageProcessorBase" shape="rect" coords="0,112,156,136"/>
-<area href="classtgstk_mesh_processor_base.html" alt="tgstkMeshProcessorBase" shape="rect" coords="166,112,322,136"/>
+<area href="classtgstk_image_processor_base.html" title="Base class for TGSTK image processors." alt="tgstkImageProcessorBase" shape="rect" coords="0,112,156,136"/>
+<area href="classtgstk_mesh_processor_base.html" title="Base class for TGSTK mesh processors." alt="tgstkMeshProcessorBase" shape="rect" coords="166,112,322,136"/>
 <area href="classtgstk_algorithm_base.html" title="Base class for TGSTK algorithms." alt="tgstkAlgorithmBase" shape="rect" coords="0,56,156,80"/>
 <area href="classtgstk_algorithm_base.html" title="Base class for TGSTK algorithms." alt="tgstkAlgorithmBase" shape="rect" coords="166,56,322,80"/>
 <area href="classtgstk_object_base.html" alt="tgstkObjectBase" shape="rect" coords="0,0,156,24"/>
@@ -226,7 +229,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a0b6f4477e1b9386e3181e42c5dae72bc inherit pro_attribs_classtgstk_object_base"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtgstk_object_base.html#a0b6f4477e1b9386e3181e42c5dae72bc">objectName</a></td></tr>
 <tr class="separator:a0b6f4477e1b9386e3181e42c5dae72bc inherit pro_attribs_classtgstk_object_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Tetrahedral mesh generation from a multiclass label image. </p>
+<p><a class="el" href="classtgstk_image_to_mesh_filter.html" title="Tetrahedral mesh generation from a multiclass label image.">tgstkImageToMeshFilter</a> generates a tetrahedral mesh from a label image with multiple subdomains using 3D restricted Delaunay triangulation with a protecting phase to guarantee an accurate representation of the subdomain boundaries. The filter is based on the <a href="https://doc.cgal.org/latest/Manual/index.html">CGAL</a> library. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add7bf067bf6a826a1b73b33446d2e94b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add7bf067bf6a826a1b73b33446d2e94b">&#9670;&nbsp;</a></span>tgstkImageToMeshFilter()</h2>
 
@@ -330,6 +336,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga0b79c473082a4ec2a45ed1497f3ac873">CGAL sliver exuder</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -347,6 +355,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga16694b09a2acc8ab3f26b7d57633ccb0">CGAL sliver exuder</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -364,6 +374,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Gets the generated tetrahedral mesh.</p>
+<p>The mesh is of type <a href="https://https://vtk.org/doc/nightly/html/classvtkUnstructuredGrid.html">vtkUnstructuredGrid</a>. </p>
 
 </div>
 </div>
@@ -381,6 +393,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga6abfd3773eeb47d88ce6cffb91f14d2f">CGAL Lloyd smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -398,6 +412,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gaa7254c80bba62400f43f1e49506b975a">CGAL Lloyd smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -415,6 +431,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga1d041e8dbde3860cde3c20107225ecb1">CGAL ODT smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -432,6 +450,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gafbecfd22651a08e6812d8a5ad9b49852">CGAL ODT smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -449,6 +469,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga5714d10decd9eecd30997572b785e03b">CGAL sliver perturber</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -466,6 +488,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gaedf18f7f3c4647ec5fce5d67e435757a">CGAL sliver perturber</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -484,6 +508,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the multiclass label image.</p>
+<p>The image scalar type must be VTK_UNSIGNED_SHORT. </p>
 
 </div>
 </div>
@@ -502,6 +528,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the <a href="https://doc.cgal.org/latest/Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL cell radius edge ratio mesh criterion</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -520,6 +548,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the <a href="https://doc.cgal.org/latest/Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL cell size mesh criterion</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -538,6 +568,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the <a href="https://doc.cgal.org/latest/Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL facet distance mesh criterion</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -556,6 +588,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the <a href="https://doc.cgal.org/latest/Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL facet size mesh criterion</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -574,6 +608,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets the <a href="https://doc.cgal.org/latest/Mesh_3/classCGAL_1_1Mesh__criteria__3.html">CGAL facet angle mesh criterion</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -592,6 +628,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates/deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#ga16694b09a2acc8ab3f26b7d57633ccb0">CGAL sliver exuder</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -610,6 +648,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates/deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gaa7254c80bba62400f43f1e49506b975a">CGAL Lloyd smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -628,6 +668,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates/deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gafbecfd22651a08e6812d8a5ad9b49852">CGAL ODT smoother</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>
@@ -646,6 +688,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Activates/deactivates the <a href="https://doc.cgal.org/latest/Mesh_3/group__PkgMesh3Parameters.html#gaedf18f7f3c4647ec5fce5d67e435757a">CGAL sliver perturber</a>.</p>
+<p>See <a class="el" href="citelist.html#CITEREF_cgal_2021">[1]</a>. </p>
 
 </div>
 </div>

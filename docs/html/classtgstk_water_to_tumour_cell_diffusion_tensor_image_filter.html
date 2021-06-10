@@ -90,7 +90,7 @@ Inheritance diagram for tgstkWaterToTumourCellDiffusionTensorImageFilter:</div>
  <div class="center">
   <img src="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.png" usemap="#tgstkWaterToTumourCellDiffusionTensorImageFilter_map" alt=""/>
   <map id="tgstkWaterToTumourCellDiffusionTensorImageFilter_map" name="tgstkWaterToTumourCellDiffusionTensorImageFilter_map">
-<area href="classtgstk_image_processor_base.html" alt="tgstkImageProcessorBase" shape="rect" coords="0,112,299,136"/>
+<area href="classtgstk_image_processor_base.html" title="Base class for TGSTK image processors." alt="tgstkImageProcessorBase" shape="rect" coords="0,112,299,136"/>
 <area href="classtgstk_algorithm_base.html" title="Base class for TGSTK algorithms." alt="tgstkAlgorithmBase" shape="rect" coords="0,56,299,80"/>
 <area href="classtgstk_object_base.html" alt="tgstkObjectBase" shape="rect" coords="0,0,299,24"/>
   </map>
@@ -207,7 +207,7 @@ Additional Inherited Members</h2></td></tr>
 \[ \bar{\bar{D}}(\bar{r}) = \begin{cases}\bar{\bar{D}}_\text{white}(\bar{r}) \quad &amp;\text{if } \bar{r} \in \Omega_\text{white} \bigcup \Omega_\text{oedema} \bigcup \Omega_\text{enhancing} \bigcup \Omega_\text{necrotic} \\ \bar{\bar{D}}_\text{grey} \quad &amp;\text{if } \bar{r} \in \Omega_\text{grey} \\ \bar{\bar{0}} \quad &amp;\text{otherwise} \end{cases} \]
 </p>
 <p>where \(\bar{\bar{D}}_\text{white}(\bar{r})\) is the tumour diffusion tensor field in white matter; \(\bar{\bar{D}}_\text{grey}\) is the constant tumour diffusion tensor in grey matter; \(\bar{\bar{0}}\) is the null tensor; and \(\Omega_\text{white}\), \(\Omega_\text{oedema}\), \(\Omega_\text{enhancing}\), \(\Omega_\text{necrotic}\), and \(\Omega_\text{grey}\) are respectively the white matter, oedema, enhancing core, necrotic core, and grey matter subdomains.</p>
-<p>The anisotropic tumour diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}\) is built as proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[2]</a> :</p>
+<p>The anisotropic tumour diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}\) is built as proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[3]</a> :</p>
 <p class="formulaDsp">
 \[ \bar{\bar{D}}_\text{white} = \frac{3 \, d_\text{white}} {\sum_{i=1}^3 \tilde{\lambda}_i(a)} \sum_{i=1}^3 \tilde{\lambda}_i(a) \, \bar{e}_i \, \bar{e}_i^\top \]
 </p>
@@ -430,7 +430,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Sets the diffusion tensor mode.</p>
-<p><a class="el" href="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.html#a7a2ddb49df4fa96357f747cb78c63a7ca816d074262da537e4d610f0c628ea742">tgstkWaterToTumourCellDiffusionTensorImageFilter::ANISOTROPIC</a> will produce an anisotropic tumour cell diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}(\bar{r})\) derived from a user-provided water diffusion tensor field \(\bar{\bar{D}}_\text{water}(\bar{r})\) assessed by DTI using the method proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[2]</a>. <a class="el" href="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.html#a7a2ddb49df4fa96357f747cb78c63a7cac8a89d899ca88c1f904d25347cf45b3c">tgstkWaterToTumourCellDiffusionTensorImageFilter::ISOTROPIC</a> will produce a constant isotropic tumour cell diffusion tensor in white matter of mean diffusivity \(d_\text{white}\). No water diffusion tensor field must be provided for this mode. </p>
+<p><a class="el" href="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.html#a7a2ddb49df4fa96357f747cb78c63a7ca816d074262da537e4d610f0c628ea742">tgstkWaterToTumourCellDiffusionTensorImageFilter::ANISOTROPIC</a> will produce an anisotropic tumour cell diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}(\bar{r})\) derived from a user-provided water diffusion tensor field \(\bar{\bar{D}}_\text{water}(\bar{r})\) assessed by DTI using the method proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[3]</a>. <a class="el" href="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.html#a7a2ddb49df4fa96357f747cb78c63a7cac8a89d899ca88c1f904d25347cf45b3c">tgstkWaterToTumourCellDiffusionTensorImageFilter::ISOTROPIC</a> will produce a constant isotropic tumour cell diffusion tensor in white matter of mean diffusivity \(d_\text{white}\). No water diffusion tensor field must be provided for this mode. </p>
 
 </div>
 </div>
@@ -449,7 +449,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Sets the diffusion tensor mode to <a class="el" href="classtgstk_water_to_tumour_cell_diffusion_tensor_image_filter.html#a7a2ddb49df4fa96357f747cb78c63a7ca816d074262da537e4d610f0c628ea742">tgstkWaterToTumourCellDiffusionTensorImageFilter::ANISOTROPIC</a>.</p>
-<p>Will produce an anisotropic tumour cell diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}(\bar{r})\) derived from a user-provided water diffusion tensor field \(\bar{\bar{D}}_\text{water}(\bar{r})\) assessed by DTI using the method proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[2]</a>. </p>
+<p>Will produce an anisotropic tumour cell diffusion tensor field in white matter \(\bar{\bar{D}}_\text{white}(\bar{r})\) derived from a user-provided water diffusion tensor field \(\bar{\bar{D}}_\text{water}(\bar{r})\) assessed by DTI using the method proposed in <a class="el" href="citelist.html#CITEREF_jbabdi_2005">[3]</a>. </p>
 
 </div>
 </div>

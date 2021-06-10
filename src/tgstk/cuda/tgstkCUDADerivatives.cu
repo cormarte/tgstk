@@ -1,3 +1,27 @@
+/*==========================================================================
+
+  This file is part of the Tumor Growth Simulation ToolKit (TGSTK)
+  (<https://github.com/cormarte/TGSTK>, <https://cormarte.github.io/TGSTK>).
+
+  Copyright (C) 2021  Corentin Martens
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+  Contact: corentin.martens@ulb.be
+
+==========================================================================*/
+
 #include "tgstkCUDACommon.h"
 #include "tgstkCUDADerivatives.h"
 #include "tgstkCUDAOperations.h"
@@ -127,24 +151,24 @@ void gpuInitializeDerivativeKernels(float* spacing) {
     float hostDyyKernel[3] = {1.0f/(spacing[1]*spacing[1]), -2.0f/(spacing[1]*spacing[1]), 1.0f/(spacing[1]*spacing[1])};  // Better approximation than applying twice Dy, which implies y+2 and y-2 coefficients
     float hostDzzKernel[3] = {1.0f/(spacing[2]*spacing[2]), -2.0f/(spacing[2]*spacing[2]), 1.0f/(spacing[2]*spacing[2])};  // Better approximation than applying twice Dz, which implies z+2 and z-2 coefficients
 
-    CHECK(cudaMallocHost((void**)&devDxKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
-    CHECK(cudaMallocHost((void**)&devDyKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
-    CHECK(cudaMallocHost((void**)&devDzKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
-    CHECK(cudaMallocHost((void**)&devDxxKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
-    CHECK(cudaMallocHost((void**)&devDyyKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
-    CHECK(cudaMallocHost((void**)&devDzzKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDxKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDyKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDzKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDxxKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDyyKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
+    CUDA_CHECK(cudaMallocHost((void**)&devDzzKernel, 3*sizeof(float), cudaHostAllocWriteCombined));
 
-    CHECK(cudaMemcpyToSymbol(devDxKernel, hostDxKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
-    CHECK(cudaMemcpyToSymbol(devDyKernel, hostDyKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
-    CHECK(cudaMemcpyToSymbol(devDzKernel, hostDzKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
-    CHECK(cudaMemcpyToSymbol(devDxxKernel, hostDxxKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
-    CHECK(cudaMemcpyToSymbol(devDyyKernel, hostDyyKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
-    CHECK(cudaMemcpyToSymbol(devDzzKernel, hostDzzKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDxKernel, hostDxKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDyKernel, hostDyKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDzKernel, hostDzKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDxxKernel, hostDxxKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDyyKernel, hostDyyKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
+    CUDA_CHECK(cudaMemcpyToSymbol(devDzzKernel, hostDzzKernel, 3*sizeof(float), 0, cudaMemcpyHostToDevice));
 
-    CHECK(cudaGetSymbolAddress((void**)&devDxKernelPtr, devDxKernel));
-    CHECK(cudaGetSymbolAddress((void**)&devDyKernelPtr, devDyKernel));
-    CHECK(cudaGetSymbolAddress((void**)&devDzKernelPtr, devDzKernel));
-    CHECK(cudaGetSymbolAddress((void**)&devDxxKernelPtr, devDxxKernel));
-    CHECK(cudaGetSymbolAddress((void**)&devDyyKernelPtr, devDyyKernel));
-    CHECK(cudaGetSymbolAddress((void**)&devDzzKernelPtr, devDzzKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDxKernelPtr, devDxKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDyKernelPtr, devDyKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDzKernelPtr, devDzKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDxxKernelPtr, devDxxKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDyyKernelPtr, devDyyKernel));
+    CUDA_CHECK(cudaGetSymbolAddress((void**)&devDzzKernelPtr, devDzzKernel));
 }

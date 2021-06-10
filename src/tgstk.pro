@@ -36,7 +36,8 @@ HEADERS += \
     tgstk/cuda/tgstkCUDACommon.h \
     tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h \
     tgstk/cuda/tgstkLinearQuadraticTumourCellSurvival.h \
-    tgstk/algorithms/tgstkImageProcessorBase.h
+    tgstk/algorithms/tgstkImageProcessorBase.h \
+    tgstk/algorithms/tgstkMeshProcessorBase.h
 
 
 contains(CONFIG, "python") {

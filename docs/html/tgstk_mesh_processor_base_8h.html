@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TGSTK: tgstkImageProcessorBase.h File Reference</title>
+<title>TGSTK: tgstkMeshProcessorBase.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,90 +75,24 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">tgstkImageProcessorBase.h File Reference</div>  </div>
+<div class="title">tgstkMeshProcessorBase.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="tgstk_global_8h_source.html">tgstk/tgstkGlobal.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="tgstk_algorithm_base_8h_source.html">tgstk/algorithms/tgstkAlgorithmBase.h</a>&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;vtkImageData.h&gt;</code><br />
 <code>#include &lt;vtkSmartPointer.h&gt;</code><br />
+<code>#include &lt;vtkUnstructuredGrid.h&gt;</code><br />
 </div>
-<p><a href="tgstk_image_processor_base_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="tgstk_mesh_processor_base_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtgstk_image_processor_base.html">tgstkImageProcessorBase</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for TGSTK image processors.  <a href="classtgstk_image_processor_base.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtgstk_mesh_processor_base.html">tgstkMeshProcessorBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for TGSTK mesh processors.  <a href="classtgstk_mesh_processor_base.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a8c413ab0537c98978125c92a74a19467"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tgstk_image_processor_base_8h.html#a8c413ab0537c98978125c92a74a19467">assertImageNumberOfScalarComponents</a>(image,  numberOfScalarComponents)&#160;&#160;&#160;_assertImageNumberOfScalarComponents(image, numberOfScalarComponents, #image)</td></tr>
-<tr class="separator:a8c413ab0537c98978125c92a74a19467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a725f5b869ebe8d01864b79aaaa6b35be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tgstk_image_processor_base_8h.html#a725f5b869ebe8d01864b79aaaa6b35be">assertImageScalarType</a>(image,  scalarTypes)&#160;&#160;&#160;_assertImageScalarType(image, scalarTypes, #image)</td></tr>
-<tr class="separator:a725f5b869ebe8d01864b79aaaa6b35be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a8c413ab0537c98978125c92a74a19467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c413ab0537c98978125c92a74a19467">&#9670;&nbsp;</a></span>assertImageNumberOfScalarComponents</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define assertImageNumberOfScalarComponents</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">image, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">numberOfScalarComponents&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;_assertImageNumberOfScalarComponents(image, numberOfScalarComponents, #image)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a725f5b869ebe8d01864b79aaaa6b35be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a725f5b869ebe8d01864b79aaaa6b35be">&#9670;&nbsp;</a></span>assertImageScalarType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define assertImageScalarType</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">image, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">scalarTypes&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;_assertImageScalarType(image, scalarTypes, #image)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

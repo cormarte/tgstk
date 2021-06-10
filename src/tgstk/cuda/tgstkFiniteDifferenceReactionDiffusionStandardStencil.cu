@@ -1,3 +1,27 @@
+/*==========================================================================
+
+  This file is part of the Tumor Growth Simulation ToolKit (TGSTK)
+  (<https://github.com/cormarte/TGSTK>, <https://cormarte.github.io/TGSTK>).
+
+  Copyright (C) 2021  Corentin Martens
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+  Contact: corentin.martens@ulb.be
+
+==========================================================================*/
+
 #include "tgstkCUDACommon.h"
 #include "tgstkCUDADerivatives.h"
 #include "tgstkCUDAOperations.h"
@@ -128,7 +152,7 @@ void gpuFiniteDifferenceReactionDiffusionStandardStencil(float* hostDxx, float* 
 
     // Device selection
 
-    CHECK(cudaSetDevice(0));
+    CUDA_CHECK(cudaSetDevice(0));
 
 
     // Memory allocation
@@ -150,19 +174,19 @@ void gpuFiniteDifferenceReactionDiffusionStandardStencil(float* hostDxx, float* 
     cudaPitchedPtr devDy;
     cudaPitchedPtr devDz;
 
-    CHECK(cudaMalloc3D(&devDxx, floatExtent));
-    CHECK(cudaMalloc3D(&devDxy, floatExtent));
-    CHECK(cudaMalloc3D(&devDxz, floatExtent));
-    CHECK(cudaMalloc3D(&devDyy, floatExtent));
-    CHECK(cudaMalloc3D(&devDyz, floatExtent));
-    CHECK(cudaMalloc3D(&devDzz, floatExtent));
-    CHECK(cudaMalloc3D(&devProliferationRate, floatExtent));
-    CHECK(cudaMalloc3D(&devBoundary, charExtent));
-    CHECK(cudaMalloc3D(&devPreviousDensity, floatExtent));
-    CHECK(cudaMalloc3D(&devNextDensity, floatExtent));
-    CHECK(cudaMalloc3D(&devDx, floatExtent));
-    CHECK(cudaMalloc3D(&devDy, floatExtent));
-    CHECK(cudaMalloc3D(&devDz, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDxx, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDxy, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDxz, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDyy, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDyz, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDzz, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devProliferationRate, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devBoundary, charExtent));
+    CUDA_CHECK(cudaMalloc3D(&devPreviousDensity, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devNextDensity, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDx, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDy, floatExtent));
+    CUDA_CHECK(cudaMalloc3D(&devDz, floatExtent));
 
 
     // Host to device copy
@@ -173,55 +197,55 @@ void gpuFiniteDifferenceReactionDiffusionStandardStencil(float* hostDxx, float* 
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDxx, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDxx;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDxy, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDxy;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDxz, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDxz;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDyy, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDyy;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDyz, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDyz;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostDzz, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devDzz;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostProliferationRate, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devProliferationRate;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostBoundary, w * sizeof(unsigned char), w, h);
     hostToDeviceParameters.dstPtr = devBoundary;
     hostToDeviceParameters.extent = charExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
     hostToDeviceParameters.kind = cudaMemcpyHostToDevice;
     hostToDeviceParameters.srcPtr = make_cudaPitchedPtr(hostInitialDensity, w * sizeof(float), w, h);
     hostToDeviceParameters.dstPtr = devPreviousDensity;
     hostToDeviceParameters.extent = floatExtent;
-    CHECK(cudaMemcpy3D(&hostToDeviceParameters));
+    CUDA_CHECK(cudaMemcpy3D(&hostToDeviceParameters));
 
 
     // Derivative kernel initilization
@@ -248,45 +272,45 @@ void gpuFiniteDifferenceReactionDiffusionStandardStencil(float* hostDxx, float* 
     deviceToHostParameters.dstPtr = make_cudaPitchedPtr(hostFinalDensity, w * sizeof(float), w, h);
     deviceToHostParameters.extent = floatExtent;
     deviceToHostParameters.kind = cudaMemcpyDeviceToHost;
-    CHECK(cudaMemcpy3D(&deviceToHostParameters));
+    CUDA_CHECK(cudaMemcpy3D(&deviceToHostParameters));
 
     deviceToHostParameters.srcPtr = devDx;
     deviceToHostParameters.dstPtr = make_cudaPitchedPtr(hostFinalDensityGradientX, w * sizeof(float), w, h);
     deviceToHostParameters.extent = floatExtent;
     deviceToHostParameters.kind = cudaMemcpyDeviceToHost;
-    CHECK(cudaMemcpy3D(&deviceToHostParameters));
+    CUDA_CHECK(cudaMemcpy3D(&deviceToHostParameters));
 
     deviceToHostParameters.srcPtr = devDy;
     deviceToHostParameters.dstPtr = make_cudaPitchedPtr(hostFinalDensityGradientY, w * sizeof(float), w, h);
     deviceToHostParameters.extent = floatExtent;
     deviceToHostParameters.kind = cudaMemcpyDeviceToHost;
-    CHECK(cudaMemcpy3D(&deviceToHostParameters));
+    CUDA_CHECK(cudaMemcpy3D(&deviceToHostParameters));
 
     deviceToHostParameters.srcPtr = devDz;
     deviceToHostParameters.dstPtr = make_cudaPitchedPtr(hostFinalDensityGradientZ, w * sizeof(float), w, h);
     deviceToHostParameters.extent = floatExtent;
     deviceToHostParameters.kind = cudaMemcpyDeviceToHost;
-    CHECK(cudaMemcpy3D(&deviceToHostParameters));
+    CUDA_CHECK(cudaMemcpy3D(&deviceToHostParameters));
 
 
     // Memory deallocation
 
-    CHECK(cudaFree(devDxx.ptr));
-    CHECK(cudaFree(devDxy.ptr));
-    CHECK(cudaFree(devDxz.ptr));
-    CHECK(cudaFree(devDyy.ptr));
-    CHECK(cudaFree(devDyz.ptr));
-    CHECK(cudaFree(devDzz.ptr));
-    CHECK(cudaFree(devProliferationRate.ptr));
-    CHECK(cudaFree(devBoundary.ptr));
-    CHECK(cudaFree(devPreviousDensity.ptr));
-    CHECK(cudaFree(devNextDensity.ptr));
-    CHECK(cudaFree(devDx.ptr));
-    CHECK(cudaFree(devDy.ptr));
-    CHECK(cudaFree(devDz.ptr));
+    CUDA_CHECK(cudaFree(devDxx.ptr));
+    CUDA_CHECK(cudaFree(devDxy.ptr));
+    CUDA_CHECK(cudaFree(devDxz.ptr));
+    CUDA_CHECK(cudaFree(devDyy.ptr));
+    CUDA_CHECK(cudaFree(devDyz.ptr));
+    CUDA_CHECK(cudaFree(devDzz.ptr));
+    CUDA_CHECK(cudaFree(devProliferationRate.ptr));
+    CUDA_CHECK(cudaFree(devBoundary.ptr));
+    CUDA_CHECK(cudaFree(devPreviousDensity.ptr));
+    CUDA_CHECK(cudaFree(devNextDensity.ptr));
+    CUDA_CHECK(cudaFree(devDx.ptr));
+    CUDA_CHECK(cudaFree(devDy.ptr));
+    CUDA_CHECK(cudaFree(devDz.ptr));
 
 
     // Reset
 
-    CHECK(cudaDeviceReset());
+    CUDA_CHECK(cudaDeviceReset());
 }

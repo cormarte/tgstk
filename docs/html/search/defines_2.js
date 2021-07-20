@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['check_375',['CHECK',['../tgstk_c_u_d_a_common_8h.html#aa71a48e50b4abf1947670de242e764e0',1,'tgstkCUDACommon.h']]]
+  ['cuda_5fcheck_379',['CUDA_CHECK',['../tgstk_c_u_d_a_common_8h.html#aeaf2b8792be9f99ad11147059ef5079d',1,'tgstkCUDACommon.h']]]
 ];

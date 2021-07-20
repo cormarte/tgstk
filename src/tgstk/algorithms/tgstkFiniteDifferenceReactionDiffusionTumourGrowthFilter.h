@@ -114,9 +114,8 @@ class TGSTK_EXPORT tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter : pu
          * Gets the final normalised tumour cell density gradient image
          * \f$\bar{\nabla}c(\bar{r}, T)\f$ in \f$\text{mm}^{-1}\f$.
          *
-         * The image scalar type is VTK_DOUBLE. The image has 3
-         * (\f$\!\partial_x c, \partial_y c, \partial_z c\f$) scalar
-         * components.
+         * The image scalar type is VTK_DOUBLE. The image has 3 scalar
+         * components (\f$\!\partial_x c, \partial_y c, \partial_z c\f$).
          *
          */
         vtkSmartPointer<vtkImageData> getFinalCellDensityGradientImage();

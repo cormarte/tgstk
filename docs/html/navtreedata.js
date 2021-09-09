@@ -35,8 +35,8 @@ var NAVTREE =
           [ "Step 2: Install TGSTK from PyPI", "index.html#autotoc_md7", null ]
         ] ]
       ] ],
-      [ "Examples", "index.html#autotoc_md8", [
-        [ "Sample Data", "index.html#autotoc_md9", null ]
+      [ "Getting Started", "index.html#autotoc_md8", [
+        [ "Tumour Growth Simulation", "index.html#autotoc_md9", null ]
       ] ]
     ] ],
     [ "Bibliography", "citelist.html", null ],

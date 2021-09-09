@@ -11,7 +11,7 @@ TGSTK's source files can be retrieved from the [github repo](https://github.com/
 	git clone https://github.com/cormarte/tgstk.git
 	
 #### Step 2: Compiling ####
-*Section under writing*
+*[Section under writing]*
 
 ### Python ###
 #### Step 1: Install the CUDA® Toolkit ####

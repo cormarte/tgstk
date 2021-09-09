@@ -6,12 +6,11 @@ Welcome to the Tumor Growth Simulation ToolKit's documentation page!
 ## Installation ##
 ### C++ ###
 #### Step 1: Getting the Source Files ####
-TGSTK's source files can be retrieved from the [github repo](https://github.com/cormarte/TGSTK.git) using:
+TGSTK's source files can be retrieved from the [github repo](https://github.com/cormarte/tgstk.git) using:
 
-	git clone https://github.com/cormarte/TGSTK.git
+	git clone https://github.com/cormarte/tgstk.git
 	
 #### Step 2: Compiling ####
-
 
 
 ### Python ###
@@ -26,8 +25,6 @@ Note: The CUDA® binaries directory may need to be adjusted depending on the CUD
 A package containg the TGSTK binaries and Python wrappers can be installed directly from PyPI using:
 
 	pip install tgstk
-
-### Troubleshooting ###
 
 
 ## Examples ##

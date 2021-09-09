@@ -33,11 +33,10 @@ var NAVTREE =
         [ "Python", "index.html#autotoc_md5", [
           [ "Step 1: Install the CUDA® Toolkit", "index.html#autotoc_md6", null ],
           [ "Step 2: Install TGSTK from PyPI", "index.html#autotoc_md7", null ]
-        ] ],
-        [ "Troubleshooting", "index.html#autotoc_md8", null ]
+        ] ]
       ] ],
-      [ "Examples", "index.html#autotoc_md9", [
-        [ "Sample Data", "index.html#autotoc_md10", null ]
+      [ "Examples", "index.html#autotoc_md8", [
+        [ "Sample Data", "index.html#autotoc_md9", null ]
       ] ]
     ] ],
     [ "Bibliography", "citelist.html", null ],
@@ -69,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"tgstk_mesh_scalars_from_image_filter_8h.html"
+"tgstk_mesh_scalars_from_image_filter_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -2705,13 +2705,14 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_tgstkAlgorithmBase swig_types[10]
 #define SWIGTYPE_p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter swig_types[11]
 #define SWIGTYPE_p_tgstkImageProcessorBase swig_types[12]
-#define SWIGTYPE_p_unsigned___int64 swig_types[13]
-#define SWIGTYPE_p_unsigned_char swig_types[14]
-#define SWIGTYPE_p_unsigned_int swig_types[15]
-#define SWIGTYPE_p_unsigned_long swig_types[16]
-#define SWIGTYPE_p_unsigned_short swig_types[17]
-static swig_type_info *swig_types[19];
-static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
+#define SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter swig_types[13]
+#define SWIGTYPE_p_unsigned___int64 swig_types[14]
+#define SWIGTYPE_p_unsigned_char swig_types[15]
+#define SWIGTYPE_p_unsigned_int swig_types[16]
+#define SWIGTYPE_p_unsigned_long swig_types[17]
+#define SWIGTYPE_p_unsigned_short swig_types[18]
+static swig_type_info *swig_types[20];
+static swig_module_info swig_module = {swig_types, 19, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2817,6 +2818,7 @@ namespace swig {
 
 #include <vtkPythonUtil.h>
 #include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+#include <tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h>
 #include <tgstk/misc/tgstkBrainTissueType.h>
 
 
@@ -3333,6 +3335,239 @@ SWIGINTERN PyObject *tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_sw
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_tgstkLinearQuadraticTumourCellSurvivalImageFilter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_tgstkLinearQuadraticTumourCellSurvivalImageFilter", 0, 0, 0)) SWIG_fail;
+  result = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *)new tgstkLinearQuadraticTumourCellSurvivalImageFilter();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_tgstkLinearQuadraticTumourCellSurvivalImageFilter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_tgstkLinearQuadraticTumourCellSurvivalImageFilter" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_check(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_check" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  result = (bool)(arg1)->check();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_execute(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_execute" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  (arg1)->execute();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_getFinalCellDensityImage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  vtkSmartPointer< vtkImageData > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_getFinalCellDensityImage" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  result = (arg1)->getFinalCellDensityImage();
+  {
+    PyImport_ImportModule("vtk");
+    resultobj = vtkPythonUtil::GetObjectFromPointer(static_cast<vtkObjectBase*>(result));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  (arg1)->setAlpha(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  (arg1)->setBeta(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  vtkSmartPointer< vtkImageData > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  {
+    arg2 = vtkSmartPointer<vtkImageData>(static_cast<vtkImageData*>(vtkPythonUtil::GetPointerFromObject(swig_obj[1],"vtkImageData")));
+    
+    if (!arg2) {
+      SWIG_exception(SWIG_TypeError, "A ""vtkImageData" " object is required.");
+    }
+  }
+  (arg1)->setDoseMapImage(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  tgstkLinearQuadraticTumourCellSurvivalImageFilter *arg1 = (tgstkLinearQuadraticTumourCellSurvivalImageFilter *) 0 ;
+  vtkSmartPointer< vtkImageData > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage" "', argument " "1"" of type '" "tgstkLinearQuadraticTumourCellSurvivalImageFilter *""'"); 
+  }
+  arg1 = reinterpret_cast< tgstkLinearQuadraticTumourCellSurvivalImageFilter * >(argp1);
+  {
+    arg2 = vtkSmartPointer<vtkImageData>(static_cast<vtkImageData*>(vtkPythonUtil::GetPointerFromObject(swig_obj[1],"vtkImageData")));
+    
+    if (!arg2) {
+      SWIG_exception(SWIG_TypeError, "A ""vtkImageData" " object is required.");
+    }
+  }
+  (arg1)->setInitialCellDensityImage(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *tgstkLinearQuadraticTumourCellSurvivalImageFilter_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *tgstkLinearQuadraticTumourCellSurvivalImageFilter_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "delete_tgstkAlgorithmBase", _wrap_delete_tgstkAlgorithmBase, METH_O, NULL},
@@ -3356,6 +3591,17 @@ static PyMethodDef SwigMethods[] = {
 	 { "tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_setTimeStep", _wrap_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_setTimeStep, METH_VARARGS, NULL},
 	 { "tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swigregister", tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swigregister, METH_O, NULL},
 	 { "tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swiginit", tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swiginit, METH_VARARGS, NULL},
+	 { "new_tgstkLinearQuadraticTumourCellSurvivalImageFilter", _wrap_new_tgstkLinearQuadraticTumourCellSurvivalImageFilter, METH_NOARGS, NULL},
+	 { "delete_tgstkLinearQuadraticTumourCellSurvivalImageFilter", _wrap_delete_tgstkLinearQuadraticTumourCellSurvivalImageFilter, METH_O, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_check", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_check, METH_O, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_execute", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_execute, METH_O, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_getFinalCellDensityImage", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_getFinalCellDensityImage, METH_O, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha, METH_VARARGS, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta, METH_VARARGS, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage, METH_VARARGS, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage", _wrap_tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage, METH_VARARGS, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_swigregister", tgstkLinearQuadraticTumourCellSurvivalImageFilter_swigregister, METH_O, NULL},
+	 { "tgstkLinearQuadraticTumourCellSurvivalImageFilter_swiginit", tgstkLinearQuadraticTumourCellSurvivalImageFilter_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3369,8 +3615,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 static void *_p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkImageProcessorBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((tgstkImageProcessorBase *)  ((tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter *) x));
 }
+static void *_p_tgstkLinearQuadraticTumourCellSurvivalImageFilterTo_p_tgstkImageProcessorBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((tgstkImageProcessorBase *)  ((tgstkLinearQuadraticTumourCellSurvivalImageFilter *) x));
+}
 static void *_p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkAlgorithmBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((tgstkAlgorithmBase *) (tgstkImageProcessorBase *) ((tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter *) x));
+}
+static void *_p_tgstkLinearQuadraticTumourCellSurvivalImageFilterTo_p_tgstkAlgorithmBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((tgstkAlgorithmBase *) (tgstkImageProcessorBase *) ((tgstkLinearQuadraticTumourCellSurvivalImageFilter *) x));
 }
 static void *_p_tgstkImageProcessorBaseTo_p_tgstkAlgorithmBase(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((tgstkAlgorithmBase *)  ((tgstkImageProcessorBase *) x));
@@ -3388,6 +3640,7 @@ static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|
 static swig_type_info _swigt__p_tgstkAlgorithmBase = {"_p_tgstkAlgorithmBase", "tgstkAlgorithmBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter = {"_p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter", "tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tgstkImageProcessorBase = {"_p_tgstkImageProcessorBase", "tgstkImageProcessorBase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter = {"_p_tgstkLinearQuadraticTumourCellSurvivalImageFilter", "tgstkLinearQuadraticTumourCellSurvivalImageFilter *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned___int64 = {"_p_unsigned___int64", "UINT64 *|DWORD64 *|unsigned __int64 *|DWORDLONG *|ULONGLONG *|ULONG64 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "FCHAR *|unsigned char *|UCHAR *|BYTE *|TBYTE *|UINT8 *|BOOLEAN *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "UINT32 *|DWORD32 *|UINT *|unsigned int *|UINT_PTR *|ULONG32 *", 0, 0, (void*)0, 0};
@@ -3408,6 +3661,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_tgstkAlgorithmBase,
   &_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter,
   &_swigt__p_tgstkImageProcessorBase,
+  &_swigt__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter,
   &_swigt__p_unsigned___int64,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
@@ -3425,9 +3679,10 @@ static swig_cast_info _swigc__p_p_unsigned_long[] = {  {&_swigt__p_p_unsigned_lo
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed___int64[] = {  {&_swigt__p_signed___int64, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tgstkAlgorithmBase[] = {  {&_swigt__p_tgstkAlgorithmBase, 0, 0, 0},  {&_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter, _p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkAlgorithmBase, 0, 0},  {&_swigt__p_tgstkImageProcessorBase, _p_tgstkImageProcessorBaseTo_p_tgstkAlgorithmBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_tgstkAlgorithmBase[] = {  {&_swigt__p_tgstkAlgorithmBase, 0, 0, 0},  {&_swigt__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, _p_tgstkLinearQuadraticTumourCellSurvivalImageFilterTo_p_tgstkAlgorithmBase, 0, 0},  {&_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter, _p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkAlgorithmBase, 0, 0},  {&_swigt__p_tgstkImageProcessorBase, _p_tgstkImageProcessorBaseTo_p_tgstkAlgorithmBase, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter[] = {  {&_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tgstkImageProcessorBase[] = {  {&_swigt__p_tgstkImageProcessorBase, 0, 0, 0},  {&_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter, _p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkImageProcessorBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_tgstkImageProcessorBase[] = {  {&_swigt__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, _p_tgstkLinearQuadraticTumourCellSurvivalImageFilterTo_p_tgstkImageProcessorBase, 0, 0},  {&_swigt__p_tgstkImageProcessorBase, 0, 0, 0},  {&_swigt__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter, _p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilterTo_p_tgstkImageProcessorBase, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter[] = {  {&_swigt__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned___int64[] = {  {&_swigt__p_unsigned___int64, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -3448,6 +3703,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_tgstkAlgorithmBase,
   _swigc__p_tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter,
   _swigc__p_tgstkImageProcessorBase,
+  _swigc__p_tgstkLinearQuadraticTumourCellSurvivalImageFilter,
   _swigc__p_unsigned___int64,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,

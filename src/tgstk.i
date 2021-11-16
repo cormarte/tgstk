@@ -27,6 +27,7 @@
 %{
 #include <vtkPythonUtil.h>
 #include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+#include <tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h>
 #include <tgstk/misc/tgstkBrainTissueType.h>
 %}
 
@@ -39,4 +40,5 @@ VTK_SWIG_INTEROP(vtkImageData)
 %include <tgstk/algorithms/tgstkAlgorithmBase.h>
 %include <tgstk/algorithms/tgstkImageProcessorBase.h>
 %include <tgstk/algorithms/tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter.h>
+%include <tgstk/algorithms/tgstkLinearQuadraticTumourCellSurvivalImageFilter.h>
 %include <tgstk/misc/tgstkBrainTissueType.h>

@@ -133,6 +133,38 @@ class tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter(tgstkImageProcess
 # Register tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter in _tgstk:
 _tgstk.tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter_swigregister(tgstkFiniteDifferenceReactionDiffusionTumourGrowthFilter)
 
+class tgstkLinearQuadraticTumourCellSurvivalImageFilter(tgstkImageProcessorBase):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_swiginit(self, _tgstk.new_tgstkLinearQuadraticTumourCellSurvivalImageFilter())
+    __swig_destroy__ = _tgstk.delete_tgstkLinearQuadraticTumourCellSurvivalImageFilter
+
+    def check(self):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_check(self)
+
+    def execute(self):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_execute(self)
+
+    def getFinalCellDensityImage(self):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_getFinalCellDensityImage(self)
+
+    def setAlpha(self, alpha):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_setAlpha(self, alpha)
+
+    def setBeta(self, beta):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_setBeta(self, beta)
+
+    def setDoseMapImage(self, image):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_setDoseMapImage(self, image)
+
+    def setInitialCellDensityImage(self, image):
+        return _tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_setInitialCellDensityImage(self, image)
+
+# Register tgstkLinearQuadraticTumourCellSurvivalImageFilter in _tgstk:
+_tgstk.tgstkLinearQuadraticTumourCellSurvivalImageFilter_swigregister(tgstkLinearQuadraticTumourCellSurvivalImageFilter)
+
 BACKGROUND = _tgstk.BACKGROUND
 NECROTIC_CORE = _tgstk.NECROTIC_CORE
 CSF = _tgstk.CSF
